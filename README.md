@@ -1,7 +1,8 @@
 <h1 align="center">Node.js Telegram Bot API</h1>
-
+<h1 align="center">基於 Node.Js 裝配的 Telegram 機器人</h1>
 <div align="center">
 
+可以查閱 來自 Telegram.org 官網關於機器人的 [描述](https://core.telegram.org/bots/api).
 Node.js module to interact with the official [Telegram Bot API](https://core.telegram.org/bots/api).
 
 
@@ -17,20 +18,25 @@ Node.js module to interact with the official [Telegram Bot API](https://core.tel
 </div>
 
 ## Install
+## 開始裝配
+開始裝配之前 ，需要確認已經安裝 [nodejs](https://nodejs.org/)
 
 ```sh
 npm i node-telegram-bot-api
 ```
 
 ## Usage
+## 將以下文件另存爲 index.js ，並使用 ```node index.js``` 開始運作
 
 ```js
 const TelegramBot = require('node-telegram-bot-api');
 
 // replace the value below with the Telegram token you receive from @BotFather
+// 在Your_TELEGRAM_BOT_TOKEN 當中填入真實的 token ，可以在 @BotFather 裏面創建並獲取到
 const token = 'YOUR_TELEGRAM_BOT_TOKEN';
 
 // Create a bot that uses 'polling' to fetch new updates
+// 讓機器人可以獲取並更新訊息
 const bot = new TelegramBot(token, {polling: true});
 
 // Matches "/echo [whatever]"
@@ -43,21 +49,24 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
   const resp = match[1]; // the captured "whatever"
 
   // send back the matched "whatever" to the chat
+  // 返回 whatever 到當前會話
   bot.sendMessage(chatId, resp);
 });
 
 // Listen for any kind of message. There are different kinds of
+// 監聽所有發送到機器人內的訊息，並處理
 // messages.
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
 
   // send a message to the chat acknowledging receipt of their message
+  // 真正發送消息 到用戶的聊天窗口
   bot.sendMessage(chatId, 'Received your message');
 });
 ```
 
 ## Documentation
-
+## 更多文檔
 * [Usage][usage]
 * [Examples][examples]
 * [Tutorials][tutorials]
@@ -72,6 +81,7 @@ Experimental features reside on the **experimental** branch._
 
 
 ## Community
+## 使用到的其他項目
 
 We thank all the developers in the Open-Source community who continuously
 take their time and effort in advancing this project.
